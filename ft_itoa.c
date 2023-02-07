@@ -12,6 +12,17 @@
 
 #include "libft.h"
 
+static char	*f(char **s, int i, long int nb)
+{
+	(*s)[i] = '\0';
+	while (nb && i-- > -1)
+	{
+		(*s)[i] = (nb % 10) + 48;
+		nb /= 10;
+	}
+	return (*s);
+}
+
 char	*ft_itoa(int n)
 {
 	int		i;
@@ -27,16 +38,16 @@ char	*ft_itoa(int n)
 	if (nb < 0)
 	{
 		s = malloc(i++ + 2);
+		if (s == NULL)
+			return (NULL);
 		s[0] = '-';
 		nb = -nb;
 	}
 	else
-		s = malloc(i + 1);
-	s[i] = '\0';
-	while (nb && i-- > -1)
 	{
-		s[i] = (nb % 10) + 48;
-		nb /= 10;
+		s = malloc(i + 1);
+		if (s == NULL)
+			return (NULL);
 	}
-	return (s);
+	return (f(&s, i, nb));
 }

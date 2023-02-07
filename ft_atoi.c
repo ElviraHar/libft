@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elharuty <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 20:28:45 by elharuty          #+#    #+#             */
-/*   Updated: 2023/01/31 21:07:22 by elharuty         ###   ########.fr       */
+/*   Created: 2023/02/06 17:05:17 by elharuty          #+#    #+#             */
+/*   Updated: 2023/02/06 17:45:13 by elharuty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int	ft_atoi(const char *str)
 {
-	size_t			i;
-	unsigned char	*str;
+	int	i;
+	int	s;
+	int	res;
 
 	i = 0;
-	if (!s)
-		return (NULL);
-	str = (unsigned char *)s;
-	while (i < n)
+	s = 1;
+	res = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == 43 || str[i] == 45)
 	{
-		if ((unsigned char)c == str[i])
-			return (&str[i]);
+		if (str[i] == 45)
+			s = -1;
 		i++;
 	}
-	return (NULL);
+	while (str[i] >= 48 && str[i] <= 57)
+	{
+		res = (res * 10) + (str[i] - 48);
+		i++;
+	}
+	return (res * s);
 }
