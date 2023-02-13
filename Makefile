@@ -44,7 +44,8 @@ SRCS = 	ft_isalpha.c 	\
 		ft_putendl_fd.c	\
 		ft_putnbr_fd.c	\
 		ft_putstr_fd.c	\
-		ft_itoa.c
+		ft_itoa.c		\
+		ft_split.c
 HEADER	= libft.h
 OBJ		= $(SRCS:.c=.o)
 CC		= cc
