@@ -52,7 +52,7 @@ char	**ffree(char ***s1)
 	return (NULL);
 }
 
-char	**fff(const char *s, char c, int i, int j)
+char	**twofactor(const char *s, char c, int i, int j)
 {
 	int		k;
 	char	**dest;
@@ -83,5 +83,5 @@ char	**ft_split(char const *s, char c)
 {
 	if (!s)
 		return (NULL);
-	return (fff(s, c, 0, 0));
+	return (twofactor(s, c, 0, 0));
 }
